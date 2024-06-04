@@ -1,4 +1,4 @@
-#my comment
+# my comment
 print("Hello, im Python")
 
 mystring = """multi
@@ -34,3 +34,7 @@ while compare<5:
 
 for n in myNestedList:
 	print(n)
+
+from MySubDir import MyModule
+
+MyModule.SayHi()
