@@ -3,18 +3,33 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
 class MainWindow(QMainWindow):
+    button: QPushButton
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
 
+        self.label = QLabel("myLabel")
+
         self.setWindowTitle("MyMainWindow")
         self.setMinimumSize(600, 400)
-        self.SetContent()
+        self.set_layout()
 
         self.show()
-    def SetContent(self):
-        lbl = self.setCentralWidget(QLabel("txt"))
-        #btnA = QPushButton("MyButtonA")
-        #btnB = QPushButton("MyButtonB")
+    def set_layout(self):
+
+        self.button = QPushButton("MyButtonA")
+        self.button.setCheckable(True)
+        self.button.clicked.connect(self.button_clicked)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.label)
+        layout.addWidget(self.button)
+
+        container = QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
+
+    def button_clicked(self):
+        print("clicked")
 
 
 
