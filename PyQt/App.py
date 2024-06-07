@@ -3,9 +3,22 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
 class MainWindow(QMainWindow):
-    pass
+    def __init__(self, *args, **kwargs):
+        super(MainWindow, self).__init__(*args, **kwargs)
+
+        self.setWindowTitle("MyMainWindow")
+
+        self.SetContent()
+
+        self.show()
+    def SetContent(self):
+        lbl = self.setCentralWidget(QLabel("txt"))
+        #btnA = QPushButton("MyButtonA")
+        #btnB = QPushButton("MyButtonB")
+
+
+
 def Run(args):
     app = QApplication(args)
     window = MainWindow()
-    window.show()
     app.exec_()
