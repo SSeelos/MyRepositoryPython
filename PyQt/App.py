@@ -7,7 +7,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
 
         self.setWindowTitle("MyMainWindow")
-
+        self.setMinimumSize(600, 400)
         self.SetContent()
 
         self.show()
