@@ -3,8 +3,9 @@ import PyQt.App
 
 try:
     PyQt.App.Run(sys.argv)
-except:
+except Exception as e:
     print("you've done fucked up")
+    print(e)
 else:
     print("at least you tried")
 finally:
