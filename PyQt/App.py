@@ -7,10 +7,10 @@ class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
 
-        self.label = QLabel("myLabel")
-
         self.setWindowTitle("MyMainWindow")
         self.setMinimumSize(600, 400)
+
+        self.label = QLabel("myLabel")
         self.set_layout()
 
         self.show()
