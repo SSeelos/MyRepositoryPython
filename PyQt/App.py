@@ -46,7 +46,7 @@ class MainWindow(QMainWindow):
         print("clicked")
 
     def open_view(self, checked):
-        model = CounterModel.CounterModel
+        model = CounterModel.CounterModel()
         view_model = CounterVM.CounterVM(model)
 
         if self.view is None:

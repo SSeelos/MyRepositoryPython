@@ -4,12 +4,12 @@ from PyQt.ViewModels import CounterVM
 
 
 class CounterV(QWidget):
-    def __init__(self, view_model: CounterVM):
+    def __init__(self, view_model: CounterVM.CounterVM):
         super().__init__()
 
         self.setWindowTitle('Counter V')
         self.viewModel = view_model
-        self.viewModel.countChanged.connect(self.updateCounter)
+        self.viewModel.countChanged.connect(self.update_counter)
 
         self.button = QPushButton('Increment')
         self.label = QLabel("0")
@@ -24,5 +24,8 @@ class CounterV(QWidget):
 
         self.setLayout(self.layout)
 
-    def updateCounter(self, count):
-        self.label.setText(str(count))
+    def update_counter(self, count):
+        try:
+            self.label.setText(str(count))
+        except Exception as e:
+            print(e)
