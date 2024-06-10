@@ -4,7 +4,14 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
+from Models import CounterModel
+from PyQt.ViewModels import CounterVM
+from PyQt.Views import CounterV
+
+
 class MainWindow(QMainWindow):
+    view: CounterV.CounterV = None
+
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
 
@@ -18,7 +25,7 @@ class MainWindow(QMainWindow):
         self.set_layout()
         self.set_interface()
 
-        self.show()
+        # self.show()
 
     def set_layout(self):
         self.layout.addWidget(self.label)
@@ -38,10 +45,17 @@ class MainWindow(QMainWindow):
     def button_clicked(self):
         print("clicked")
 
-    def open_view(self):
-        print("open_view")
+    def open_view(self, checked):
+        model = CounterModel.CounterModel
+        view_model = CounterVM.CounterVM(model)
+
+        if self.view is None:
+            self.view = CounterV.CounterV(view_model)
+        self.view.show()
+
 
 def run(args):
     app = QApplication(args)
     window = MainWindow()
+    window.show()
     sys.exit(app.exec_())
