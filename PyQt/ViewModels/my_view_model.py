@@ -13,7 +13,8 @@ class MyViewModel(QObject):
 
     def update_model(self):
         try:
-            self.model.update_attribute()
-            self.my_signal.emit(self.model.my_attribute)
+            self.model.update_data()
+            # emit signal to transfer data
+            self.my_signal.emit(self.model.data)
         except Exception as e:
             print(e)

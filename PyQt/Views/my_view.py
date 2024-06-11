@@ -6,10 +6,12 @@ from PyQt.ViewModels.my_view_model import MyViewModel
 class MyView(QWidget):
     def __init__(self, view_model: MyViewModel):
         super().__init__()
-
-        self.setWindowTitle('Counter V')
+        # reference to the view model
         self.viewModel = view_model
+        # connect slot (fct) to signal
         self.viewModel.my_signal.connect(self.update_label)
+
+        self.setWindowTitle('MyView')
 
         self.button = QPushButton('Update')
         self.label = QLabel("0")
@@ -24,5 +26,6 @@ class MyView(QWidget):
 
         self.setLayout(self.layout)
 
-    def update_label(self, count):
-        self.label.setText(str(count))
+    # function that can be used as a slot
+    def update_label(self, data):
+        self.label.setText(str(data))

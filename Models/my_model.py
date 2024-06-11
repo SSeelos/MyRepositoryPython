@@ -1,6 +1,6 @@
 class MyModel:
     def __init__(self):
-        self.my_attribute = 0
+        self.data = 0
 
-    def update_attribute(self):
-        self.my_attribute += 1
+    def update_data(self):
+        self.data += 1
