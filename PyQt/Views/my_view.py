@@ -9,9 +9,9 @@ class MyView(QWidget):
 
         self.setWindowTitle('Counter V')
         self.viewModel = view_model
-        self.viewModel.my_signal.connect(self.update_counter)
+        self.viewModel.my_signal.connect(self.update_label)
 
-        self.button = QPushButton('Increment')
+        self.button = QPushButton('Update')
         self.label = QLabel("0")
         self.layout = QVBoxLayout()
         self.__init_ui()
@@ -24,8 +24,5 @@ class MyView(QWidget):
 
         self.setLayout(self.layout)
 
-    def update_counter(self, count):
-        try:
-            self.label.setText(str(count))
-        except Exception as e:
-            print(e)
+    def update_label(self, count):
+        self.label.setText(str(count))
