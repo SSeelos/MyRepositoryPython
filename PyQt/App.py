@@ -1,16 +1,13 @@
 import sys
-
-from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
 
-from Models import CounterModel
-from PyQt.ViewModels import CounterVM
-from PyQt.Views import CounterV
+from Models.my_model import MyModel
+from PyQt.ViewModels.my_view_model import MyViewModel
+from PyQt.Views.my_view import MyView
 
 
 class MainWindow(QMainWindow):
-    view: CounterV.CounterV = None
+    view: MyView = None
 
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
@@ -46,11 +43,11 @@ class MainWindow(QMainWindow):
         print("clicked")
 
     def open_view(self, checked):
-        model = CounterModel.CounterModel()
-        view_model = CounterVM.CounterVM(model)
+        model = MyModel()
+        view_model = MyViewModel(model)
 
         if self.view is None:
-            self.view = CounterV.CounterV(view_model)
+            self.view = MyView(view_model)
         self.view.show()
 
 

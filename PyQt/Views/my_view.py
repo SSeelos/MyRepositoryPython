@@ -1,15 +1,15 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
-from PyQt.ViewModels import CounterVM
+from PyQt.ViewModels.my_view_model import MyViewModel
 
 
-class CounterV(QWidget):
-    def __init__(self, view_model: CounterVM.CounterVM):
+class MyView(QWidget):
+    def __init__(self, view_model: MyViewModel):
         super().__init__()
 
         self.setWindowTitle('Counter V')
         self.viewModel = view_model
-        self.viewModel.countChanged.connect(self.update_counter)
+        self.viewModel.my_signal.connect(self.update_counter)
 
         self.button = QPushButton('Increment')
         self.label = QLabel("0")
@@ -19,7 +19,7 @@ class CounterV(QWidget):
     def __init_ui(self):
         self.layout.addWidget(self.label)
 
-        self.button.clicked.connect(self.viewModel.increment)
+        self.button.clicked.connect(self.viewModel.update_model)
         self.layout.addWidget(self.button)
 
         self.setLayout(self.layout)
